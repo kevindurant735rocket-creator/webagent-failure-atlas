@@ -1,15 +1,17 @@
 <!doctype html><html lang="zh"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WebAgent Failure Atlas — 100 Real Chinese Tasks</title>
-<meta name="description" content="100 real Chinese web tasks, honestly run: 68/100 (68.0%) pass. Gov 5/17 hard wall, F6×14, F3×8, retry 1/32.">
+<title>WebAgent Failure Atlas — 100 Real Chinese Tasks | 中文真实场景 AI 浏览器 Agent 失败图鉴</title>
+<meta name="description" content="100 real Chinese web tasks, honestly run: 68/100 (68.0%) pass. Gov 5/17 hard wall, F6×14, F3×8, retry 1/32. 中文真实场景 AI 浏览器 Agent 失败图鉴 — 同一套 harness 真抓每一步 HTTP 与快照 hash，失败即数据。">
 <meta property="og:title" content="WebAgent Failure Atlas — 100 Real Chinese Tasks">
 <meta property="og:description" content="68/100 (68.0%, CI 58.3%–76.3%) · Gov 5/17 · F6×14 F3×8 · Retry 1/32 · chi2 p=0.0007">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/figures/fig01_overall.png">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
 <style>
 :root{--bg:#f8fafc;--card:#fff;--text:#0f172a;--muted:#64748b;--pri:#2563eb;--pri2:#1e40af;--bd:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--r:12px}
-*{box-sizing:border-box}body{margin:0;font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:var(--bg);line-height:1.6}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC","PingFang SC",sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
 a{color:var(--pri);text-decoration:none}a:hover{text-decoration:underline}
 .wrap{max-width:1100px;margin:0 auto;padding:24px}
 .hero{background:linear-gradient(135deg,#eff6ff 0%,#f8fafc 60%);border:1px solid var(--bd);border-radius:16px;padding:32px;display:grid;gap:16px}
@@ -20,74 +22,194 @@ a{color:var(--pri);text-decoration:none}a:hover{text-decoration:underline}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .k{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}.v{font-size:22px;font-weight:800;margin-top:6px}.s{font-size:12px;color:var(--muted);margin-top:4px}
 .table{width:100%;border-collapse:collapse;font-size:14px}.table th,.table td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--bd)}.table th{color:var(--muted);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
-.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;font-weight:600;border:1px solid var(--bd);background:var(--card)}.btn.pri{background:var(--pri);color:#fff;border-color:var(--pri)}.btn.pri:hover{background:var(--pri2)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;font-weight:600;border:1px solid var(--bd);background:var(--card);font-size:14px}.btn.pri{background:var(--pri);color:#fff;border-color:var(--pri)}.btn.pri:hover{background:var(--pri2)}.btn svg{width:16px;height:16px}
 .figs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:900px){.figs{grid-template-columns:1fr}}
-.fig{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden}.fig img{width:100%;display:block}.fig cap{display:block;padding:8px 10px;font-size:12px;color:var(--muted)}
+.fig{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}.fig:hover{box-shadow:0 4px 12px rgba(0,0,0,.08)}.fig img{width:100%;display:block}.fig cap{display:block;padding:8px 10px;font-size:12px;color:var(--muted)}
 .note{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--r);padding:12px 14px;font-size:13px;color:#92400e}
+.bilingual{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:768px){.bilingual{grid-template-columns:1fr}}
+.bilingual .card{font-size:14px;line-height:1.7}
+.bilingual .card h3{font-size:16px;font-weight:700;margin:0 0 8px 0;color:var(--pri)}
+.bilingual .card ul{margin:4px 0;padding-left:18px}
+.bilingual .card li{margin:3px 0}
+.bilingual .card .en{color:var(--muted);font-style:italic}
+.lang-tag{display:inline-block;background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;margin-right:6px}
+.stats-row{display:flex;gap:16px;flex-wrap:wrap;margin:8px 0}
+.stats-row .stat{flex:1;min-width:120px;text-align:center;padding:8px;background:#f8fafc;border-radius:8px}
+.stats-row .stat .num{font-size:20px;font-weight:800;color:var(--pri)}
+.stats-row .stat .label{font-size:11px;color:var(--muted);margin-top:2px}
+footer{text-align:center;color:var(--muted);font-size:12px;margin:24px 0 8px;padding-top:16px;border-top:1px solid var(--bd)}
 </style></head><body><div class="wrap">
+
 <div class="hero">
 <span class="badge">100 REAL TASKS · 6 DOMAINS · HONEST RUN 2026-09-11</span>
 <div class="h1">WebAgent Failure Atlas</div>
 <div class="sub">中文真实场景 AI 浏览器 Agent 失败图鉴 — 同一套 harness 真抓每一步 HTTP 与快照 hash，失败即数据。镜像英文基准 WebArena / Mind2Web / VisualWebArena / WebVoyager / OSWorld 的方法学，换成中文真网。</div>
+
 <div class="grid">
-<div class="card"><div class="k">总体通过率</div><div class="v">68.0% <span style="font-size:14px;font-weight:600;color:var(--muted)">68/100</span></div><div class="s">95% Wilson CI 58.3%–76.3%</div></div>
-<div class="card"><div class="k">最硬墙 / 最稳</div><div class="v">政务 29% <span style="color:var(--muted);font-weight:600">·</span> 电商 100%</div><div class="s">ecom 17/17 · gov 5/17 · chi² p=0.0007</div></div>
+<div class="card"><div class="k">总体通过率 Overall</div><div class="v">68.0% <span style="font-size:14px;font-weight:600;color:var(--muted)">68/100</span></div><div class="s">95% Wilson CI 58.3%–76.3%</div></div>
+<div class="card"><div class="k">最硬墙 / 最稳</div><div class="v">政务 29% <span style="color:var(--muted);font-weight:600">·</span> 电商 100%</div><div class="s">ecom 17/17 · gov 5/17 · χ² p=0.0007</div></div>
 <div class="card"><div class="k">失败 Top2</div><div class="v">F6×14 <span style="color:var(--muted)">·</span> F3×8</div><div class="s">中文表单语义 · 动态渲染未等待</div></div>
 <div class="card"><div class="k">干预实证</div><div class="v">1/32 <span style="font-size:14px;color:var(--muted)">3.1%</span></div><div class="s">5s 退避重试仅救回 search-01 (F3)</div></div>
 </div>
+
 <div class="btns">
-<a class="btn pri" href="https://github.com/OWNER/webagent-failure-atlas">GitHub 一键复现 →</a>
-<a class="btn" href="../outputs/webagent-failure-atlas/dashboard.html">交互仪表盘</a>
-<a class="btn" href="../outputs/webagent-failure-atlas/paper-cn.md">中文论文</a>
-<a class="btn" href="#repro">复现命令</a>
+<a class="btn pri" href="https://github.com/kevindurant735rocket-creator/webagent-failure-atlas">
+<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+GitHub 一键复现 →
+</a>
+<a class="btn" href="dashboard.html">📊 交互仪表盘</a>
+<a class="btn" href="paper-cn.md">🇨🇳 中文论文</a>
+<a class="btn" href="paper-en.md">🇺🇸 English Paper</a>
+<a class="btn" href="#repro">⚡ 复现命令</a>
+</div>
+</div>
+
+<div style="height:20px"></div>
+
+<!-- 中英双语详细说明 -->
+<div class="bilingual">
+<div class="card">
+<span class="lang-tag">🇨🇳 中文</span>
+<h3>研究亮点</h3>
+<ul>
+<li><b>100 个中文真实任务</b>：搜索 17 / 电商 17 / 表单 17 / 政务 17 / 地图 16 / 媒体 16</li>
+<li><b>总体成功率 68.0%</b>（95% Wilson CI 58.3%–76.3%）</li>
+<li><b>政务最硬墙</b>（5/17，29%）vs <b>电商最稳</b>（17/17，100%）</li>
+<li><b>失败 Top2</b>：中文表单语义 F6×14、动态渲染未等待 F3×8</li>
+<li><b>重试只救回 3.1%</b>（1/32），证明软墙需结构性修复</li>
+<li><b>卡方检验</b> χ²=21.216，p=0.0007，领域差异极显著</li>
+</ul>
+</div>
+<div class="card">
+<span class="lang-tag" style="background:#dbeafe;color:#1e40af">🇺🇸 English</span>
+<h3>Key Findings</h3>
+<ul>
+<li><b>100 real Chinese tasks</b>: search 17 / ecom 17 / form 17 / gov 17 / map 16 / media 16</li>
+<li><b>Overall 68.0%</b> (95% Wilson CI 58.3%–76.3%)</li>
+<li><b>Gov = hard wall</b> (5/17, 29%) vs <b>Ecom = trivial</b> (17/17, 100%)</li>
+<li><b>Top failures</b>: F6 Chinese form semantics ×14, F3 dynamic rendering ×8</li>
+<li><b>Retry rescued only 3.1%</b> (1/32) — soft walls need structural fixes</li>
+<li><b>Chi-square</b> χ²=21.216, p=0.0007 — domain matters significantly</li>
+</ul>
 </div>
 </div>
 
 <div style="height:16px"></div>
-<div class="card"><div class="k">分域表现</div>
-<table class="table"><thead><tr><th>Domain</th><th>n</th><th>pass</th><th>rate</th><th>95% CI</th></tr></thead><tbody>
-<tr><td>ecom</td><td>17</td><td>17</td><td>100.0%</td><td>81.6%–100.0%</td></tr><tr><td>form</td><td>17</td><td>10</td><td>58.8%</td><td>36.0%–78.4%</td></tr><tr><td>gov</td><td>17</td><td>5</td><td>29.4%</td><td>13.3%–53.1%</td></tr><tr><td>map</td><td>16</td><td>12</td><td>75.0%</td><td>50.5%–89.8%</td></tr><tr><td>media</td><td>16</td><td>11</td><td>68.8%</td><td>44.4%–85.8%</td></tr><tr><td>search</td><td>17</td><td>13</td><td>76.5%</td><td>52.7%–90.5%</td></tr>
+
+<!-- 分域表现 -->
+<div class="card"><div class="k">分域表现 / By Domain</div>
+<table class="table"><thead><tr><th>Domain 领域</th><th>n</th><th>pass 通过</th><th>rate 通过率</th><th>95% CI</th></tr></thead><tbody>
+<tr><td>🛒 ecom 电商</td><td>17</td><td>17</td><td>100.0%</td><td>81.6%–100.0%</td></tr>
+<tr><td>🔍 search 搜索</td><td>17</td><td>13</td><td>76.5%</td><td>52.7%–90.5%</td></tr>
+<tr><td>🗺️ map 地图</td><td>16</td><td>12</td><td>75.0%</td><td>50.5%–89.8%</td></tr>
+<tr><td>📰 media 媒体</td><td>16</td><td>11</td><td>68.8%</td><td>44.4%–85.8%</td></tr>
+<tr><td>📝 form 表单</td><td>17</td><td>10</td><td>58.8%</td><td>36.0%–78.4%</td></tr>
+<tr><td>🏛️ gov 政务</td><td>17</td><td>5</td><td>29.4%</td><td>13.3%–53.1%</td></tr>
 </tbody></table></div>
 
 <div style="height:12px"></div>
-<div class="card"><div class="k">失败分类（7类，5类观测到）</div>
-<table class="table"><thead><tr><th>Class</th><th>n</th><th>含义</th></tr></thead><tbody>
-<tr><td>F1</td><td>4</td><td>元素定位失败</td></tr>
-<tr><td>F3</td><td>8</td><td>动态加载未等待</td></tr>
-<tr><td>F4</td><td>2</td><td>登录墙阻断</td></tr>
-<tr><td>F5</td><td>4</td><td>验证码/反爬阻断</td></tr>
-<tr><td>F6</td><td>14</td><td>中文表单语义误解</td></tr>
-<tr><td>F2/F7</td><td>0</td><td>视觉 grounding / 多步偏离（本轮零次，如实记录）</td></tr>
-</tbody></table>
-<div class="s">taxonomy: F1 定位 / F2 grounding / F3 动态 / F4 登录墙 / F5 验证码 / F6 中文表单 / F7 多步偏离</div></div>
+
+<!-- 失败分类 -->
+<div class="card"><div class="k">失败分类 / Failure Taxonomy (7 classes, 5 observed)</div>
+<table class="table"><thead><tr><th>Class</th><th>n</th><th>中文含义</th><th>English Description</th></tr></thead><tbody>
+<tr><td><span style="color:var(--bad);font-weight:700">F6</span></td><td>14</td><td>中文表单语义误解</td><td>Chinese form semantics</td></tr>
+<tr><td><span style="color:var(--bad);font-weight:700">F3</span></td><td>8</td><td>动态加载未等待</td><td>Dynamic rendering not waited</td></tr>
+<tr><td>F1</td><td>4</td><td>元素定位失败</td><td>Element locator failure</td></tr>
+<tr><td>F5</td><td>4</td><td>验证码/反爬阻断</td><td>Captcha / anti-scrape block</td></tr>
+<tr><td>F4</td><td>2</td><td>登录墙阻断</td><td>Login wall block</td></tr>
+<tr><td style="color:var(--muted)">F2</td><td>0</td><td>视觉 grounding 错误</td><td>Visual grounding error</td></tr>
+<tr><td style="color:var(--muted)">F7</td><td>0</td><td>多步遗忘/偏离</td><td>Multi-step drift</td></tr>
+</tbody></table></div>
 
 <div style="height:12px"></div>
-<div class="card" id="repro"><div class="k">一键复现</div>
-<pre style="background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto;font-size:13px">python reproduce.py
-# → n=100 pass=68 rate=0.680 CI=[0.5834,0.7633]  retry 1/32
-# 完整重建：
-bash run_all.sh --quick   # ~2min 产出 stats + 9图 + 论文 + 仪表盘</pre>
-<div class="s">Single source of truth: <code>stats.json</code> → 论文/仪表盘/落地页均由此注入，四渠道数字完全一致。</div></div>
+
+<!-- 修复杠杆 -->
+<div class="bilingual">
+<div class="card">
+<span class="lang-tag">🇨🇳 给 Builder 的 5 条修复杠杆</span>
+<ol style="margin:4px 0;padding-left:18px">
+<li><b>先等后断言</b>：动态页固定等待 + 内容长度门限（&lt;20KB 判 JS 壳），能吃掉大半 F3</li>
+<li><b>备选选择器</b>：同一语义 ≥3 种定位（文本/role/URL），一个不行换一个</li>
+<li><b>登录墙早退</b>：命中关键词即停并标记 F4，不浪费步数</li>
+<li><b>反爬退避</b>：403/429 指纹退避 + 降级镜像，保证轨迹不断档</li>
+<li><b>中文表单专项</b>：label→input 关联检查，无 label 直接告警 F6</li>
+</ol>
+</div>
+<div class="card">
+<span class="lang-tag" style="background:#dbeafe;color:#1e40af">🇺🇸 5 Fix Levers for Builders</span>
+<ol style="margin:4px 0;padding-left:18px">
+<li><b>Wait before assert</b>: fixed wait + &lt;20KB JS-shell gate kills most F3</li>
+<li><b>Fallback selectors</b>: ≥3 per semantic (text/role/URL), rotate on failure</li>
+<li><b>Login wall early exit</b>: tag F4 immediately, save steps</li>
+<li><b>Anti-scrape backoff</b>: 403/429 fingerprint + mirror fallback</li>
+<li><b>Chinese form check</b>: label→input association, alert on missing label</li>
+</ol>
+</div>
+</div>
 
 <div style="height:12px"></div>
-<div class="card"><div class="k">9 张图</div>
+
+<!-- 一键复现 -->
+<div class="card" id="repro"><div class="k">一键复现 / One-click Reproduce</div>
+<pre style="background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto;font-size:13px"><span style="color:#60a5fa"># One-click verify (秒级)</span>
+python reproduce.py
+<span style="color:#60a5fa"># → n=100 pass=68 rate=0.680 CI=[0.5834,0.7633]  retry 1/32</span>
+
+<span style="color:#60a5fa"># Full rebuild (~2min)</span>
+bash run_all.sh --quick
+<span style="color:#60a5fa"># → stats + 9 figs + papers + dashboard</span></pre>
+<div class="s">Single source of truth: <code>stats.json</code> → papers / dashboard / landing page all injected from this one file. Numbers are identical across all 4 channels.</div>
+<div class="s" style="margin-top:4px">单一事实源：<code>stats.json</code> → 论文/仪表盘/落地页均由此注入，四渠道数字完全一致。</div></div>
+
+<div style="height:12px"></div>
+
+<!-- 9 张图 -->
+<div class="card"><div class="k">9 张图 / 9 Figures</div>
 <div class="figs">
-<a class="fig" href="assets/figures/fig01_overall.png"><img src="assets/figures/fig01_overall.png" alt="overall"><cap>Fig01 总体通过率</cap></a>
-<a class="fig" href="assets/figures/fig02_by_domain.png"><img src="assets/figures/fig02_by_domain.png" alt="by domain"><cap>Fig02 分域</cap></a>
+<a class="fig" href="assets/figures/fig01_overall.png"><img src="assets/figures/fig01_overall.png" alt="overall"><cap>Fig01 总体通过率 Overall Pass Rate</cap></a>
+<a class="fig" href="assets/figures/fig02_by_domain.png"><img src="assets/figures/fig02_by_domain.png" alt="by domain"><cap>Fig02 分域表现 By Domain</cap></a>
 <a class="fig" href="assets/figures/fig03_failure.png"><img src="assets/figures/fig03_failure.png" alt="failure"><cap>Fig03 失败分布 F6×14 F3×8</cap></a>
-<a class="fig" href="assets/figures/fig04_steps.png"><img src="assets/figures/fig04_steps.png" alt="steps"><cap>Fig04 步数关联</cap></a>
-<a class="fig" href="assets/figures/fig05_login.png"><img src="assets/figures/fig05_login.png" alt="login"><cap>Fig05 登录墙</cap></a>
-<a class="fig" href="assets/figures/fig06_dynamic.png"><img src="assets/figures/fig06_dynamic.png" alt="dynamic"><cap>Fig06 动态渲染</cap></a>
-<a class="fig" href="assets/figures/fig07_bytes.png"><img src="assets/figures/fig07_bytes.png" alt="bytes"><cap>Fig07 字节分布</cap></a>
-<a class="fig" href="assets/figures/fig08_heatmap.png"><img src="assets/figures/fig08_heatmap.png" alt="heatmap"><cap>Fig08 热图</cap></a>
+<a class="fig" href="assets/figures/fig04_steps.png"><img src="assets/figures/fig04_steps.png" alt="steps"><cap>Fig04 步数关联 Step Correlation</cap></a>
+<a class="fig" href="assets/figures/fig05_login.png"><img src="assets/figures/fig05_login.png" alt="login"><cap>Fig05 登录墙 Login Wall</cap></a>
+<a class="fig" href="assets/figures/fig06_dynamic.png"><img src="assets/figures/fig06_dynamic.png" alt="dynamic"><cap>Fig06 动态渲染 Dynamic Rendering</cap></a>
+<a class="fig" href="assets/figures/fig07_bytes.png"><img src="assets/figures/fig07_bytes.png" alt="bytes"><cap>Fig07 字节分布 Bytes Distribution</cap></a>
+<a class="fig" href="assets/figures/fig08_heatmap.png"><img src="assets/figures/fig08_heatmap.png" alt="heatmap"><cap>Fig08 热图 Heatmap</cap></a>
 <a class="fig" href="assets/figures/fig09_retry.png"><img src="assets/figures/fig09_retry.png" alt="retry"><cap>Fig09 重试 1/32 (3.1%)</cap></a>
 </div></div>
 
 <div style="height:12px"></div>
-<div class="note"><b>诚实边界：</b> 规则执行器 = 自动化下界（真实 LLM Agent 只会更高）；n=100 CI 仍 ±9%；DOM 漂移 2026-09-11；观察性关联非因果；22 参考文献逐条 HTTP 200。AI 使用声明：代码/分析/文稿有 AI 辅助，科学判断与责任由人类作者承担。</div>
+
+<!-- 诚实边界 -->
+<div class="note"><b>诚实边界 / Honest Limits：</b>
+<b>中文：</b>规则执行器 = 自动化下界（真实 LLM Agent 只会更高）；n=100 CI 仍 ±9%；DOM 漂移 2026-09-11；观察性关联非因果；22 参考文献逐条 HTTP 200。AI 使用声明：代码/分析/文稿有 AI 辅助，科学判断与责任由人类作者承担。
+<br>
+<b>English:</b> Rule-based executor = lower bound (real LLM agents score higher); n=100 CI ±9%; DOM drift 2026-09-11; observational not causal; 22 refs HTTP-verified. AI disclosure: code/analysis/drafting had AI assistance; scientific judgments are human authors'.</div>
 
 <div style="height:12px"></div>
-<div class="card"><div class="k">方法学致谢</div><div style="font-size:13px;color:var(--muted)">WebArena (2307.13854) · Mind2Web (2306.06070) · VisualWebArena (2401.13649) · WebVoyager (2401.13919) · OSWorld (2404.07972) — 5 篇标杆奠定方法学，本研究镜像其纪律换成中文真网。</div></div>
 
-<div style="text-align:center;color:var(--muted);font-size:12px;margin:18px 0">© 2026 WebAgent Failure Atlas · MIT · <a href="PUBLISHED.md">发布台账</a> · Built 2026-09-12</div>
+<!-- 方法学致谢 -->
+<div class="card"><div class="k">方法学致谢 / Methodology Acknowledgments</div>
+<div style="font-size:13px;color:var(--muted)">
+<b>WebArena</b> (2307.13854) · <b>Mind2Web</b> (2306.06070) · <b>VisualWebArena</b> (2401.13649) · <b>WebVoyager</b> (2401.13919) · <b>OSWorld</b> (2404.07972) — 5 篇标杆奠定方法学，本研究镜像其纪律换成中文真网。
+<br>
+These 5 landmarks established the science of web agent evaluation — we port their discipline to the real Chinese web.
+</div></div>
+
+<!-- 引用 -->
+<div style="height:12px"></div>
+<div class="card"><div class="k">引用 / Cite</div>
+<div style="font-size:13px;font-family:monospace;background:#f8fafc;padding:8px;border-radius:8px;word-break:break-all">
+@dataset{atlas2026webagent,<br>
+&nbsp;&nbsp;title={WebAgent Failure Atlas: 100 Real Chinese Tasks},<br>
+&nbsp;&nbsp;year={2026},<br>
+&nbsp;&nbsp;url={https://github.com/kevindurant735rocket-creator/webagent-failure-atlas}<br>
+}
+</div></div>
+
+<footer>
+© 2026 WebAgent Failure Atlas · MIT License ·
+<a href="https://github.com/kevindurant735rocket-creator/webagent-failure-atlas">GitHub</a> ·
+<a href="https://zhuanlan.zhihu.com/p/2082145497570087975">知乎</a> ·
+<a href="https://x.com/Vtehvi/status/2098693633130303747">X/Twitter</a>
+</footer>
 </div></body></html>
