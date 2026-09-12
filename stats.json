@@ -1,0 +1,114 @@
+{
+  "n": 100,
+  "pass": 68,
+  "pass_rate": 0.68,
+  "wilson_ci": [
+    0.5834,
+    0.7633
+  ],
+  "by_domain": [
+    {
+      "domain": "ecom",
+      "n": 17,
+      "pass": 17,
+      "rate": 1.0,
+      "ci": [
+        0.8157,
+        1
+      ]
+    },
+    {
+      "domain": "form",
+      "n": 17,
+      "pass": 10,
+      "rate": 0.5882,
+      "ci": [
+        0.3601,
+        0.7839
+      ]
+    },
+    {
+      "domain": "gov",
+      "n": 17,
+      "pass": 5,
+      "rate": 0.2941,
+      "ci": [
+        0.1328,
+        0.5313
+      ]
+    },
+    {
+      "domain": "map",
+      "n": 16,
+      "pass": 12,
+      "rate": 0.75,
+      "ci": [
+        0.505,
+        0.8982
+      ]
+    },
+    {
+      "domain": "media",
+      "n": 16,
+      "pass": 11,
+      "rate": 0.6875,
+      "ci": [
+        0.444,
+        0.8584
+      ]
+    },
+    {
+      "domain": "search",
+      "n": 17,
+      "pass": 13,
+      "rate": 0.7647,
+      "ci": [
+        0.5274,
+        0.9045
+      ]
+    }
+  ],
+  "by_failure": [
+    {
+      "class": "F1",
+      "n": 4
+    },
+    {
+      "class": "F3",
+      "n": 8
+    },
+    {
+      "class": "F4",
+      "n": 2
+    },
+    {
+      "class": "F5",
+      "n": 4
+    },
+    {
+      "class": "F6",
+      "n": 14
+    }
+  ],
+  "chi2": {
+    "stat": 21.216,
+    "p": 0.0007,
+    "dof": 5
+  },
+  "logit": {
+    "coef": [],
+    "note": "fallback:separation coefs=[121.514, -1.196, -14.369, -42.16]",
+    "rate_login": 0.5,
+    "rate_nologin": 0.691,
+    "rate_dynamic": 0.823,
+    "rate_static": 0.447
+  },
+  "retry": {
+    "attempted": 32,
+    "rescued": 1,
+    "rescue_rate": 0.0312,
+    "rescued_ids": [
+      "search-01"
+    ]
+  }
+}

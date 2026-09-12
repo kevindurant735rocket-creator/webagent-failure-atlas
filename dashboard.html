@@ -1,0 +1,114 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>WebAgent Failure Atlas 仪表盘</title>
+<style>body{font-family:system-ui,-apple-system, sans-serif;max-width:960px;margin:24px auto;padding:0 16px}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border:1px solid #ddd;padding:6px}figure{margin:18px 0}</style></head>
+<body><header><h1>WebAgent Failure Atlas · 交互仪表盘</h1></header><main>
+<p>总体成功率 <b>68.0%</b>（68/100，95% CI 58.3%–76.3%）。分域与失败分布见下图，明细见下表。</p>
+<h2>图表</h2><figure><img src="figures/fig01_overall.png" alt="fig01_overall.png" style="max-width:100%"/><figcaption>fig01_overall.png</figcaption></figure>
+<figure><img src="figures/fig02_by_domain.png" alt="fig02_by_domain.png" style="max-width:100%"/><figcaption>fig02_by_domain.png</figcaption></figure>
+<figure><img src="figures/fig03_failure.png" alt="fig03_failure.png" style="max-width:100%"/><figcaption>fig03_failure.png</figcaption></figure>
+<figure><img src="figures/fig04_steps.png" alt="fig04_steps.png" style="max-width:100%"/><figcaption>fig04_steps.png</figcaption></figure>
+<figure><img src="figures/fig05_login.png" alt="fig05_login.png" style="max-width:100%"/><figcaption>fig05_login.png</figcaption></figure>
+<figure><img src="figures/fig06_dynamic.png" alt="fig06_dynamic.png" style="max-width:100%"/><figcaption>fig06_dynamic.png</figcaption></figure>
+<figure><img src="figures/fig07_bytes.png" alt="fig07_bytes.png" style="max-width:100%"/><figcaption>fig07_bytes.png</figcaption></figure>
+<figure><img src="figures/fig08_heatmap.png" alt="fig08_heatmap.png" style="max-width:100%"/><figcaption>fig08_heatmap.png</figcaption></figure>
+<figure><img src="figures/fig09_retry.png" alt="fig09_retry.png" style="max-width:100%"/><figcaption>fig09_retry.png</figcaption></figure><h2>100 条轨迹明细</h2>
+<table><tr><th>task</th><th>domain</th><th>site</th><th>status</th><th>failure</th><th>http</th><th>bytes</th></tr><tr><td>search-01</td><td>search</td><td>百度-搜索AI智能体</td><td>fail</td><td>F3</td><td>200</td><td>1488</td></tr>
+<tr><td>search-02</td><td>search</td><td>必应-搜索网页自动化</td><td>pass</td><td>none</td><td>200</td><td>97029</td></tr>
+<tr><td>search-03</td><td>search</td><td>搜狗-搜索大模型</td><td>pass</td><td>none</td><td>200</td><td>433284</td></tr>
+<tr><td>search-04</td><td>search</td><td>360搜索-搜索Agent</td><td>pass</td><td>none</td><td>200</td><td>820997</td></tr>
+<tr><td>search-05</td><td>search</td><td>知乎-搜索智能体</td><td>fail</td><td>F5</td><td>403</td><td>694</td></tr>
+<tr><td>search-06</td><td>search</td><td>豆瓣-搜索读书</td><td>pass</td><td>none</td><td>200</td><td>15546</td></tr>
+<tr><td>search-07</td><td>search</td><td>B站-搜索WebAgent</td><td>pass</td><td>none</td><td>200</td><td>300612</td></tr>
+<tr><td>search-08</td><td>search</td><td>京东-搜索笔记本</td><td>pass</td><td>none</td><td>200</td><td>47183</td></tr>
+<tr><td>search-09</td><td>search</td><td>淘宝-搜索手机</td><td>pass</td><td>none</td><td>200</td><td>34135</td></tr>
+<tr><td>search-10</td><td>search</td><td>拼多多-搜索耳机</td><td>pass</td><td>none</td><td>200</td><td>11300</td></tr>
+<tr><td>search-11</td><td>search</td><td>必应国际-搜索Agent</td><td>pass</td><td>none</td><td>200</td><td>96997</td></tr>
+<tr><td>search-12</td><td>search</td><td>百度新闻-首页</td><td>pass</td><td>none</td><td>200</td><td>65132</td></tr>
+<tr><td>search-13</td><td>search</td><td>头条搜索-搜索智能体</td><td>pass</td><td>none</td><td>200</td><td>2002999</td></tr>
+<tr><td>search-14</td><td>search</td><td>知乎热榜-首页</td><td>fail</td><td>F5</td><td>403</td><td>694</td></tr>
+<tr><td>search-15</td><td>search</td><td>微博热搜-首页</td><td>fail</td><td>F1</td><td>200</td><td>9564</td></tr>
+<tr><td>search-16</td><td>search</td><td>豆瓣电影-搜索</td><td>pass</td><td>none</td><td>200</td><td>26226</td></tr>
+<tr><td>search-17</td><td>search</td><td>B站番剧-首页</td><td>pass</td><td>none</td><td>200</td><td>237691</td></tr>
+<tr><td>ecom-01</td><td>ecom</td><td>京东-商品页</td><td>pass</td><td>none</td><td>200</td><td>35486</td></tr>
+<tr><td>ecom-02</td><td>ecom</td><td>淘宝-首页</td><td>pass</td><td>none</td><td>200</td><td>90399</td></tr>
+<tr><td>ecom-03</td><td>ecom</td><td>拼多多-首页</td><td>pass</td><td>none</td><td>200</td><td>11300</td></tr>
+<tr><td>ecom-04</td><td>ecom</td><td>苏宁-首页</td><td>pass</td><td>none</td><td>200</td><td>201798</td></tr>
+<tr><td>ecom-05</td><td>ecom</td><td>唯品会-首页</td><td>pass</td><td>none</td><td>200</td><td>79600</td></tr>
+<tr><td>ecom-06</td><td>ecom</td><td>当当-图书</td><td>pass</td><td>none</td><td>200</td><td>469757</td></tr>
+<tr><td>ecom-07</td><td>ecom</td><td>京东-购物车</td><td>pass</td><td>none</td><td>200</td><td>32118</td></tr>
+<tr><td>ecom-08</td><td>ecom</td><td>淘宝-登录墙</td><td>pass</td><td>none</td><td>200</td><td>57903</td></tr>
+<tr><td>ecom-09</td><td>ecom</td><td>京东-登录</td><td>pass</td><td>none</td><td>200</td><td>31894</td></tr>
+<tr><td>ecom-10</td><td>ecom</td><td>1688-首页</td><td>pass</td><td>none</td><td>200</td><td>104059</td></tr>
+<tr><td>ecom-11</td><td>ecom</td><td>天猫-首页</td><td>pass</td><td>none</td><td>200</td><td>104736</td></tr>
+<tr><td>ecom-12</td><td>ecom</td><td>聚划算-首页</td><td>pass</td><td>none</td><td>200</td><td>104736</td></tr>
+<tr><td>ecom-13</td><td>ecom</td><td>苏宁-搜索空调</td><td>pass</td><td>none</td><td>200</td><td>223473</td></tr>
+<tr><td>ecom-14</td><td>ecom</td><td>国美-首页</td><td>pass</td><td>none</td><td>200</td><td>8708</td></tr>
+<tr><td>ecom-15</td><td>ecom</td><td>盒马-首页</td><td>pass</td><td>none</td><td>200</td><td>1799</td></tr>
+<tr><td>ecom-16</td><td>ecom</td><td>1688-搜索女装</td><td>pass</td><td>none</td><td>200</td><td>2605</td></tr>
+<tr><td>ecom-17</td><td>ecom</td><td>当当-新书</td><td>pass</td><td>none</td><td>200</td><td>673597</td></tr>
+<tr><td>form-01</td><td>form</td><td>12306-余票查询</td><td>pass</td><td>none</td><td>200</td><td>78700</td></tr>
+<tr><td>form-02</td><td>form</td><td>中国铁路-首页</td><td>fail</td><td>F6</td><td>200</td><td>1480</td></tr>
+<tr><td>form-03</td><td>form</td><td>携程-机票</td><td>fail</td><td>F3</td><td>432</td><td>17</td></tr>
+<tr><td>form-04</td><td>form</td><td>去哪儿-机票</td><td>pass</td><td>none</td><td>200</td><td>123677</td></tr>
+<tr><td>form-05</td><td>form</td><td>飞猪-火车票</td><td>pass</td><td>none</td><td>200</td><td>15790</td></tr>
+<tr><td>form-06</td><td>form</td><td>同程-酒店</td><td>pass</td><td>none</td><td>200</td><td>157492</td></tr>
+<tr><td>form-07</td><td>form</td><td>美团-外卖</td><td>fail</td><td>F6</td><td>200</td><td>25645</td></tr>
+<tr><td>form-08</td><td>form</td><td>饿了么-首页</td><td>fail</td><td>F6</td><td>200</td><td>1626</td></tr>
+<tr><td>form-09</td><td>form</td><td>大众点评-美食</td><td>fail</td><td>F6</td><td>200</td><td>2907</td></tr>
+<tr><td>form-10</td><td>form</td><td>问卷星-示例</td><td>pass</td><td>none</td><td>200</td><td>55982</td></tr>
+<tr><td>form-11</td><td>form</td><td>12306-查票</td><td>pass</td><td>none</td><td>200</td><td>92544</td></tr>
+<tr><td>form-12</td><td>form</td><td>携程-酒店</td><td>pass</td><td>none</td><td>200</td><td>432610</td></tr>
+<tr><td>form-13</td><td>form</td><td>飞猪-度假</td><td>fail</td><td>F5</td><td>0</td><td>0</td></tr>
+<tr><td>form-14</td><td>form</td><td>同程-机票</td><td>pass</td><td>none</td><td>200</td><td>606605</td></tr>
+<tr><td>form-15</td><td>form</td><td>美团-酒店</td><td>fail</td><td>F5</td><td>403</td><td>552</td></tr>
+<tr><td>form-16</td><td>form</td><td>饿了么-商超</td><td>pass</td><td>none</td><td>200</td><td>30659</td></tr>
+<tr><td>form-17</td><td>form</td><td>腾讯问卷-首页</td><td>pass</td><td>none</td><td>200</td><td>22378</td></tr>
+<tr><td>gov-01</td><td>gov</td><td>国务院-政策</td><td>fail</td><td>F6</td><td>200</td><td>39990</td></tr>
+<tr><td>gov-02</td><td>gov</td><td>国家统计局-数据</td><td>fail</td><td>F6</td><td>200</td><td>141435</td></tr>
+<tr><td>gov-03</td><td>gov</td><td>人社部-社保</td><td>fail</td><td>F6</td><td>200</td><td>989</td></tr>
+<tr><td>gov-04</td><td>gov</td><td>教育部-首页</td><td>fail</td><td>F6</td><td>200</td><td>104457</td></tr>
+<tr><td>gov-05</td><td>gov</td><td>卫健委-首页</td><td>fail</td><td>F3</td><td>412</td><td>3425</td></tr>
+<tr><td>gov-06</td><td>gov</td><td>市场监管-首页</td><td>pass</td><td>none</td><td>200</td><td>85802</td></tr>
+<tr><td>gov-07</td><td>gov</td><td>北京政务-服务</td><td>pass</td><td>none</td><td>200</td><td>35097</td></tr>
+<tr><td>gov-08</td><td>gov</td><td>上海一网通办</td><td>pass</td><td>none</td><td>200</td><td>121341</td></tr>
+<tr><td>gov-09</td><td>gov</td><td>广东政务</td><td>pass</td><td>none</td><td>200</td><td>108172</td></tr>
+<tr><td>gov-10</td><td>gov</td><td>浙江政务</td><td>pass</td><td>none</td><td>200</td><td>142622</td></tr>
+<tr><td>gov-11</td><td>gov</td><td>税务总局-首页</td><td>fail</td><td>F6</td><td>200</td><td>144195</td></tr>
+<tr><td>gov-12</td><td>gov</td><td>国家医保-首页</td><td>fail</td><td>F6</td><td>200</td><td>119230</td></tr>
+<tr><td>gov-13</td><td>gov</td><td>外交部-首页</td><td>fail</td><td>F6</td><td>200</td><td>106665</td></tr>
+<tr><td>gov-14</td><td>gov</td><td>公安部-首页</td><td>fail</td><td>F3</td><td>521</td><td>888</td></tr>
+<tr><td>gov-15</td><td>gov</td><td>民政部-首页</td><td>fail</td><td>F6</td><td>200</td><td>103060</td></tr>
+<tr><td>gov-16</td><td>gov</td><td>生态环境部-首页</td><td>fail</td><td>F6</td><td>200</td><td>203211</td></tr>
+<tr><td>gov-17</td><td>gov</td><td>交通运输部-首页</td><td>fail</td><td>F6</td><td>200</td><td>92287</td></tr>
+<tr><td>map-01</td><td>map</td><td>高德-首页</td><td>fail</td><td>F1</td><td>200</td><td>90080</td></tr>
+<tr><td>map-02</td><td>map</td><td>百度地图-首页</td><td>pass</td><td>none</td><td>200</td><td>303712</td></tr>
+<tr><td>map-03</td><td>map</td><td>腾讯地图-首页</td><td>pass</td><td>none</td><td>200</td><td>21067</td></tr>
+<tr><td>map-04</td><td>map</td><td>12306-站点</td><td>pass</td><td>none</td><td>200</td><td>23298</td></tr>
+<tr><td>map-05</td><td>map</td><td>携程-目的地</td><td>pass</td><td>none</td><td>200</td><td>2256789</td></tr>
+<tr><td>map-06</td><td>map</td><td>马蜂窝-游记</td><td>fail</td><td>F3</td><td>202</td><td>209</td></tr>
+<tr><td>map-07</td><td>map</td><td>大众点评-地图</td><td>pass</td><td>none</td><td>200</td><td>17800</td></tr>
+<tr><td>map-08</td><td>map</td><td>美团-门店</td><td>pass</td><td>none</td><td>200</td><td>118025</td></tr>
+<tr><td>map-09</td><td>map</td><td>链家-找房</td><td>pass</td><td>none</td><td>200</td><td>78234</td></tr>
+<tr><td>map-10</td><td>map</td><td>贝壳-找房</td><td>pass</td><td>none</td><td>200</td><td>63412</td></tr>
+<tr><td>map-11</td><td>map</td><td>安居客-首页</td><td>pass</td><td>none</td><td>200</td><td>390755</td></tr>
+<tr><td>map-12</td><td>map</td><td>58同城-首页</td><td>pass</td><td>none</td><td>200</td><td>113842</td></tr>
+<tr><td>map-13</td><td>map</td><td>贝壳租房-频道</td><td>fail</td><td>F4</td><td>404</td><td>57653</td></tr>
+<tr><td>map-14</td><td>map</td><td>链家二手房-频道</td><td>pass</td><td>none</td><td>200</td><td>175165</td></tr>
+<tr><td>map-15</td><td>map</td><td>去哪儿-攻略</td><td>pass</td><td>none</td><td>200</td><td>2580</td></tr>
+<tr><td>map-16</td><td>map</td><td>携程-门票</td><td>fail</td><td>F3</td><td>200</td><td>6253</td></tr>
+<tr><td>media-01</td><td>media</td><td>B站-首页</td><td>pass</td><td>none</td><td>200</td><td>141470</td></tr>
+<tr><td>media-02</td><td>media</td><td>知乎-首页</td><td>pass</td><td>none</td><td>200</td><td>45347</td></tr>
+<tr><td>media-03</td><td>media</td><td>微博-首页</td><td>fail</td><td>F3</td><td>200</td><td>9486</td></tr>
+<tr><td>media-04</td><td>media</td><td>豆瓣-首页</td><td>pass</td><td>none</td><td>200</td><td>87222</td></tr>
+<tr><td>media-05</td><td>media</td><td>小红书-首页</td><td>pass</td><td>none</td><td>200</td><td>35829</td></tr>
+<tr><td>media-06</td><td>media</td><td>抖音-首页</td><td>fail</td><td>F4</td><td>200</td><td>72914</td></tr>
+<tr><td>media-07</td><td>media</td><td>快手-首页</td><td>fail</td><td>F3</td><td>200</td><td>63</td></tr>
+<tr><td>media-08</td><td>media</td><td>微信读书-首页</td><td>pass</td><td>none</td><td>200</td><td>675680</td></tr>
+<tr><td>media-09</td><td>media</td><td>网易新闻-首页</td><td>pass</td><td>none</td><td>200</td><td>294997</td></tr>
+<tr><td>media-10</td><td>media</td><td>腾讯新闻-首页</td><td>pass</td><td>none</td><td>200</td><td>17798</td></tr>
+<tr><td>media-11</td><td>media</td><td>人民网-首页</td><td>fail</td><td>F1</td><td>200</td><td>130586</td></tr>
+<tr><td>media-12</td><td>media</td><td>新华网-首页</td><td>pass</td><td>none</td><td>200</td><td>152145</td></tr>
+<tr><td>media-13</td><td>media</td><td>央视网-首页</td><td>fail</td><td>F1</td><td>200</td><td>316857</td></tr>
+<tr><td>media-14</td><td>media</td><td>V2EX-首页</td><td>pass</td><td>none</td><td>200</td><td>106141</td></tr>
+<tr><td>media-15</td><td>media</td><td>掘金-首页</td><td>pass</td><td>none</td><td>200</td><td>78229</td></tr>
+<tr><td>media-16</td><td>media</td><td>虎扑-首页</td><td>pass</td><td>none</td><td>200</td><td>441833</td></tr></table>
+<p>复现：<code>bash run_all.sh --quick</code>。数据：<code>work/artifacts/derived/runs.jsonl + stats.json</code>。</p></main></body></html>
