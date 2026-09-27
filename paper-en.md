@@ -22,7 +22,7 @@ Wait-before-assert; fallback selectors (>=3); early-exit on login walls; backoff
 Rule-based executor = lower bound (real LLM agents score higher); DOM drift; observational, not causal.
 
 ## 6 Reproduce
-`bash run_all.sh --quick`. See work/artifacts/derived/ and dashboard in outputs.
+`bash verify.sh` re-checks every published number (34 assertions, incl. by-domain, failure classes, chi-square and subgroup rates). The collection harness is not published here, so the repo offers verification rather than a re-run.
 
 ## References (each HTTP-verified)
 1. WebArena: A Realistic Web Environment for Building Autonomous Agents — https://arxiv.org/abs/2307.13854 (HTTP 200)

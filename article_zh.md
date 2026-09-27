@@ -22,5 +22,5 @@
 · AI 使用声明：代码/分析/文稿有 AI 辅助，科学判断与责任由人类作者承担
 
 复现与链接
-一键复现 python reproduce.py 秒级 PASS，完整重跑 bash run_all.sh --quick
+一键复核 python reproduce.py 秒级 PASS（34 项断言），bash verify.sh 交叉核对全部文档
 落地页/论文/仪表盘/数据见发布链接汇总（PUBLISHED.md），数字与论文完全一致，欢迎拿复现命令打我的脸。

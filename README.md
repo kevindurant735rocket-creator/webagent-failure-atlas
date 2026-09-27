@@ -5,19 +5,36 @@
 English benchmarks (WebArena/Mind2Web/VisualWebArena/WebVoyager/OSWorld) are English/synthetic. This ports the discipline to the real Chinese web: search/ecom/form/gov/map/media, one polite harness (≤1rps), semantic asserts, deterministic 7-class taxonomy. Failures are data.
 
 ## One-click reproduce
+
+No dependencies — the standard library is enough.
+
 ```bash
 python reproduce.py
-# expected: PASS — n=100 pass=68 rate=0.680 CI=[0.5834,0.7633]  retry 1/32
-# or full pipeline:
-bash run_all.sh --quick   # rebuilds stats + 9 figs + papers + dashboard
+# expected: PASS — all 34 checks match stats.json
+#          (n=100 pass=68 rate=0.680 CI=[0.5834,0.7633] retry 1/32)
+
+bash verify.sh   # reproduce.py, plus a cross-document consistency check
 ```
+
+`reproduce.py` re-derives **every** figure in `stats.json` from `runs.jsonl`
+and fails loudly on any mismatch: headline rate and Wilson CI, all six
+`by_domain` rows, all five `by_failure` classes, the chi-square statistic and
+its dof, the four logit-fallback subgroup rates, the retry block, and task-id
+uniqueness.
+
+The collection harness that produced `runs.jsonl` is not published here, so
+this repository offers **verification, not re-collection**. `requirements.txt`
+records the packages the unpublished pipeline used; none are needed to check
+any published number.
 
 ## What's inside
 - `runs.jsonl` — 100 trajectories (http/final_url/bytes/hash/snapshot_sha)
-- `stats.json` — single source of truth (injected into papers/dashboard)
+- `stats.json` — single source of truth for every number published anywhere
+- `reproduce.py` — re-derives all of it from `runs.jsonl` (34 assertions)
+- `verify.sh` — reproduce + cross-document consistency
 - `assets/figures/` — fig01..fig09 (overall/by_domain/failure/steps/login/dynamic/bytes/heatmap/retry)
-- `../outputs/webagent-failure-atlas/paper-{cn,en}.md` — papers (22 refs HTTP-verified)
-- `../outputs/webagent-failure-atlas/dashboard.html` — interactive dashboard (100 rows)
+- `paper-{cn,en}.md`, `article_{cn,en}.md` — papers and outreach copy
+- `index.html`, `dashboard.html` — landing page and 100-row task table
 
 ## Key numbers (must stay consistent across all channels)
 - Overall 68.0% (68/100, CI 58.3%–76.3%)

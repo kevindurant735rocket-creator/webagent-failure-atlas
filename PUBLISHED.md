@@ -5,21 +5,23 @@
 ## 四件套状态
 | 渠道 | 链接 | 特征文本 | 状态 |
 |------|------|----------|------|
-| 落地页 | `public-release/index.html`（待发布为公开URL） | 68.0% / F6×14 / 1/32 | 待发布 |
-| GitHub | `OWNER/webagent-failure-atlas`（待 `gh repo create --public` + push） | reproduce.py PASS | 待发布 |
-| 知乎 | `zhuanlan.zhihu.com/p/<ID>`（待 ego-browser 发布） | 68.0% / 政务5/17 / F6×14 | 待发布 |
-| X | `x.com/<user>/status/<ID>` thread T1..T8（待 ego-browser 发布） | 68/100 / F6×14 / 1/32 | 待发布 |
+| 落地页 | `index.html`（GitHub Pages 未启用） | 68.0% / F6×14 / 1/32 | 仓库内就绪，未上线 |
+| GitHub | https://github.com/kevindurant735rocket-creator/webagent-failure-atlas | reproduce.py PASS (34) | **已发布** |
+| 知乎 | — | 68.0% / 政务5/17 / F6×14 | 未发布 |
+| X | — | 68/100 / F6×14 / 1/32 | 未发布 |
 
 ## 各渠道要点
 - 落地页：OG 卡 + 4 KPI 卡 + 分域表 + 失败表 + 9 图 + 诚实边界 + 一键复现
-- GitHub：`reproduce.py` 秒级 PASS，`run_all.sh --quick` 全重建
+- GitHub：`reproduce.py` 秒级 PASS（34 项断言），`verify.sh` 复核全部文档数字
 - 知乎：结构【一句话结论→你能带走什么→三步自查法】，剥 markdown 后 `keyboard.paste`，两步发布（发布→更新）
 - X：T1..T8 逐条 ≤280（URL计23）已校验，最长205字符，首条含落地页/GitHub链接
 
-## 未做清单（待用户授权）
-- [ ] 落地页发布为公开 URL（发布为应用）
-- [ ] GitHub 建公开仓库并 push（`gh repo create` 需授权）
-- [ ] 知乎/X 反向链接（跨渠道互相引流，需授权）
+## 未做清单
+- [x] GitHub 公开仓库 + push（已完成）
+- [x] `reproduce.py` 覆盖全部 stats.json 字段（34 项断言）
+- [x] 修正指向不存在的 `run_all.sh` 的 11 处引用 → `verify.sh`
+- [ ] 落地页发布为公开 URL（需开启 GitHub Pages）
+- [ ] 知乎 / X 发布（需本人账号授权）
 - [ ] 知乎/X 定时重发/置顶
 
 ## 诚实边界（随文必带）
@@ -34,4 +36,5 @@
 - 落地页 `python build_public_site.py` → 8372 bytes
 
 ## 时间
-- 2026-09-12 stage A 完成，stage B 待授权执行
+- 2026-09-12 stage A 完成，GitHub 已发布
+- 2026-09-27 复核：34 项断言全通过；修正失效引用与占位符

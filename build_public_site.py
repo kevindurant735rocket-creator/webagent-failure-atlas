@@ -79,7 +79,7 @@ a{{color:var(--pri);text-decoration:none}}a:hover{{text-decoration:underline}}
 <pre style="background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto;font-size:13px">python reproduce.py
 # → n=100 pass=68 rate=0.680 CI=[0.5834,0.7633]  retry 1/32
 # 完整重建：
-bash run_all.sh --quick   # ~2min 产出 stats + 9图 + 论文 + 仪表盘</pre>
+bash verify.sh   # ~2min 产出 stats + 9图 + 论文 + 仪表盘</pre>
 <div class="s">Single source of truth: <code>stats.json</code> → 论文/仪表盘/落地页均由此注入，四渠道数字完全一致。</div></div>
 
 <div style="height:12px"></div>

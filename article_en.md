@@ -12,6 +12,6 @@ T5/ Method mirrors WebArena/Mind2Web/VisualWebArena/WebVoyager/OSWorld, swapped 
 
 T6/ Limits honest: n=100 CI ±9%, DOM drift (2026-09-11), observational not causal. 22 refs HTTP-verified, numbers injected from traces.
 
-T7/ Repro: python reproduce.py → PASS in seconds. Full rebuild: bash run_all.sh --quick. Dashboard has 9 figs + 100 rows. Links in next tweet.
+T7/ Repro: python reproduce.py → PASS in seconds (34 checks). bash verify.sh also cross-checks every document. Dashboard has 9 figs + 100 rows. Links in next tweet.
 
 T8/ Links: landing page + GitHub + papers + dashboard — all numbers match stats.json. Fix F6/F3 first.

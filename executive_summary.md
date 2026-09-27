@@ -13,4 +13,4 @@
 
 **Limits**: Rule-based executor = lower bound; DOM drift (2026-09-11); observational not causal; n=100 CI still ±9%.
 
-**Reproduce**: `python reproduce.py` → PASS in seconds; `bash run_all.sh --quick` rebuilds all.
+**Reproduce**: `python reproduce.py` → PASS in seconds (34 checks); `bash verify.sh` also cross-checks every document.

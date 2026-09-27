@@ -33,7 +33,7 @@ VisualWebArena 补上视觉模态；WebVoyager 验证端到端 LMM 跑真实网�
 - 观察性数据：关联非因果；2026 年部分站点反爬策略可能已更新。
 
 ## 6 可复现
-`bash run_all.sh --quick` 一键重跑全部；`work/artifacts/derived/` 含 runs.jsonl/stats.json/figures；仪表盘见 outputs。
+`bash verify.sh` 复核全部数字（34 项断言，含分域/失败类/卡方/子组率）。采集脚本未随本仓库发布，故仅提供核对而非重跑。
 
 ## 参考文献（逐条 HTTP 已验证）
 1. WebArena: A Realistic Web Environment for Building Autonomous Agents — https://arxiv.org/abs/2307.13854 (HTTP 200)
