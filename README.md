@@ -1,5 +1,8 @@
 # WebAgent Failure Atlas
 
+**Live site: <https://kevindurant735rocket-creator.github.io/webagent-failure-atlas/>**
+
+
 **A reproducible benchmark of 100 real Chinese web tasks, for web-agent builders.**
 
 Every English web-agent benchmark runs in English or on synthetic sites. This one runs
